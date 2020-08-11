@@ -56,6 +56,10 @@ class Paystack_InlineEmbed extends Paystack
 		$parameters = static::getDefaultParameters();
 	
         $parameters['email'] = Ayoola_Form::getGlobalValue( 'email' ) ? : ( Ayoola_Form::getGlobalValue( 'email_address' ) ? : Ayoola_Application::getUserInfo( 'email' ) );
+        if( ! empty( $cart['checkout_info']['email_address'] ) )
+        {
+            $parameters['email'] = $cart['checkout_info']['email_address'];
+        }
         if( empty( $parameters['email'] ) )
         {
             $form = new Ayoola_Form();
