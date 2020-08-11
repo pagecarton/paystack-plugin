@@ -37,16 +37,30 @@ class Paystack_Settings extends PageCarton_Settings
      */
 	public function createForm( $submitValue, $legend = null, Array $values = null )
     {
-        $values = @$values['data'] ? : unserialize( @$values['settings'] );
+		if( ! $settings = unserialize( @$values['settings'] ) )
+		{
+			if( is_array( $values['data'] ) )
+			{
+				$settings = $values['data'];
+			}
+			elseif( is_array( $values['settings'] ) )
+			{
+				$settings = $values['settings'];
+			}
+			else
+			{
+				$settings = $values;
+			}
+        }
         $form = new Ayoola_Form( array( 'name' => $this->getObjectName() ) );
 		$form->submitValue = $submitValue ;
 		$form->oneFieldSetAtATime = true;
 		$fieldset = new Ayoola_Form_Element;
 
         //	auth levels
-		$fieldset->addElement( array( 'name' => 'secret_key', 'label' => 'Secret Key', 'value' => @$values['secret_key'], 'type' => 'InputText' ) );
-		$fieldset->addElement( array( 'name' => 'public_key', 'label' => 'Public Key', 'value' => @$values['public_key'], 'type' => 'InputText' ) );
-		$fieldset->addElement( array( 'name' => 'currency', 'label' => 'Currency Code (default is NGN)', 'value' => @$values['currency'], 'type' => 'InputText' ) );  
+		$fieldset->addElement( array( 'name' => 'secret_key', 'label' => 'Secret Key', 'value' => @$settings['secret_key'], 'type' => 'InputText' ) );
+		$fieldset->addElement( array( 'name' => 'public_key', 'label' => 'Public Key', 'value' => @$settings['public_key'], 'type' => 'InputText' ) );
+		$fieldset->addElement( array( 'name' => 'currency', 'label' => 'Currency Code (default is NGN)', 'value' => @$settings['currency'], 'type' => 'InputText' ) );  
 		
 		$fieldset->addLegend( 'Paystack Settings' );        
 		$form->addFieldset( $fieldset );
