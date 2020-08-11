@@ -1,0 +1,12 @@
+.DS_Store
+.trash
+extensions
+application/databases/Ayoola/Object/
+application/databases/Application/Log/
+application/databases/Ayoola/Doc/table.xml
+application/databases/Ayoola/Extension/Import/table.xml
+application/databases/PageCarton/Cron/Run/
+application/databases/Application/notification.xml
+application/databases/Ayoola/Access/localuser.xml
+application/databases/Application/settings.xml
+application/databases/Application/Settings/settingsname.xml
