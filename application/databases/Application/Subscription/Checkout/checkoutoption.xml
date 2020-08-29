@@ -11,10 +11,10 @@
       <TABLE_FIELD FIELD_KEY="default_form_field_value"><![CDATA[null]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="enabled"><![CDATA[0]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="checkoutoption_id"><![CDATA[714-0-1]]></TABLE_FIELD>
-      <TABLE_FIELD FIELD_KEY="checkoutoption_logo"><![CDATA[&lt;p&gt;&lt;img alt=&quot;MasterCard, Verve, Interswitch, Visa&quot; src=&quot;/paystack-secure.png&quot; title=&quot;MasterCard, Verve, Interswitch, Visa&quot; /&gt;&lt;/p&gt;]]></TABLE_FIELD>
+      <TABLE_FIELD FIELD_KEY="checkoutoption_logo"><![CDATA[null]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="object_name"><![CDATA[Paystack_InlineEmbed]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="checkout_type"><![CDATA[php_class]]></TABLE_FIELD>
-      <TABLE_FIELD FIELD_KEY="logo"><![CDATA[]]></TABLE_FIELD>
+      <TABLE_FIELD FIELD_KEY="logo"><![CDATA[/paystack-secure.png]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="creation_time"><![CDATA[1597098612]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="modified_time"><![CDATA[]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="__user_id"><![CDATA[1554892638.1731]]></TABLE_FIELD>
