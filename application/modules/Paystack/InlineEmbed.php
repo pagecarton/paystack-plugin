@@ -167,16 +167,15 @@ class Paystack_InlineEmbed extends Paystack
 
 		if ($request) {
 		  $result = json_decode($request, true);   
-		}
+        }
 		if( empty( $result['status'] ) )
 		{
 			//	Payment was not successful.
-			$orderInfo['order_status'] = 'Payment Failed';
-			
+			$orderInfo['order_status'] = 0;
 		}
 		else
 		{
-			$orderInfo['order_status'] = 'Payment Successful';
+			$orderInfo['order_status'] = 99;
 		}
 
 		$orderInfo['order_random_code'] = $_REQUEST['ref'];
