@@ -11,7 +11,7 @@
       <TABLE_FIELD FIELD_KEY="default_form_field_value"><![CDATA[null]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="enabled"><![CDATA[0]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="checkoutoption_id"><![CDATA[714-0-1]]></TABLE_FIELD>
-      <TABLE_FIELD FIELD_KEY="checkoutoption_logo"><![CDATA[null]]></TABLE_FIELD>
+      <TABLE_FIELD FIELD_KEY="checkoutoption_logo"><![CDATA[]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="object_name"><![CDATA[Paystack_InlineEmbed]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="checkout_type"><![CDATA[php_class]]></TABLE_FIELD>
       <TABLE_FIELD FIELD_KEY="logo"><![CDATA[/paystack-secure.png]]></TABLE_FIELD>
