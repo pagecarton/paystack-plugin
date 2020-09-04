@@ -96,8 +96,15 @@ class Paystack_InlineEmbed extends Paystack
 			@@$parameters['prod'] .= ' ' . $value['multiple'] . ' x ' . $value['subscription_label'];
 			@$parameters['price'] += floatval( $value['price'] * $value['multiple'] );
 			$counter++;
-		}
-		$parameters['amount'] = ( $this->getParameter( 'amount' ) ? : $parameters['price'] ) * 100;
+        }
+        
+        $cartInfo = Application_Subscription_Cart::viewInLine( array( 'return_object_data' => true, 'play_mode' => self::PLAY_MODE_JSON ) );
+        $parameters['amount'] = ( $this->getParameter( 'amount' ) ? : $parameters['price'] );
+        if( isset( $cartInfo['grand_total_price'] ) )
+        {
+            $parameters['amount'] = $cartInfo['grand_total_price'];
+        }
+		$parameters['amount'] = $parameters['amount'] * 100;
 		$parameters['plan'] = $this->getParameter( 'plan' );
 
 		$this->setViewContent( '<form action="' . $parameters['success_url'] . '" method="POST" >
