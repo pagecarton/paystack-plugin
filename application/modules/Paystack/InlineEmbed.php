@@ -108,23 +108,55 @@ class Paystack_InlineEmbed extends Paystack
 		$parameters['plan'] = $this->getParameter( 'plan' );
 
 		$this->setViewContent( '<form action="' . $parameters['success_url'] . '" method="POST" >
-								<script src="https://js.paystack.co/v1/inline.js"></script>
-								<div id="paystackEmbedContainer"><img style="margin: 0 auto; max-width: 500px; padding: 2em;" src="' . Ayoola_Application::getUrlPrefix() . '/img/loading.gif" alt="Loading Credit Card Payment with Paystack"></div>
+								<script src="https://js.paystack.co/v2/inline.js"></script>
+								<div id="paystackEmbedContainer">
+								
+								
+									<div id="activate-message">Please complete payment in pop-up screen</div>
+									<button id="activate-button" style="display:none;" type="button" onclick="loadPopUp();">Open Payment Screen</button>
+								
+								</div>
+
 
 								<script>
-								  PaystackPop.setup({
-								   key: "' . $parameters['key'] . '",
-								   email: "' . $parameters['email'] . '",
-								   amount: ' . $parameters['amount'] . ',
-								   plan: "' . $parameters['plan'] . '",
-								   currency: "' . $parameters['currency'] . '",
-								   reference: "' . $parameters['reference'] . '",
-								   container: "paystackEmbedContainer",
-								   callback: function(response){
-										location.href = "' . $parameters['success_url'] . '?ref=" + response.reference;
-									},
-									}
-								  );
+								const paystack = new PaystackPop();
+
+
+								let loadPopUp = function(){
+									
+									document.getElementById( "activate-button" ).style.display = "none";
+									document.getElementById( "activate-message" ).style.display = "block";
+
+									paystack.newTransaction({
+										key: "' . $parameters['key'] . '",
+										email: "' . $parameters['email'] . '",
+										amount: ' . $parameters['amount'] . ',
+										plan: "' . $parameters['plan'] . '",
+										currency: "' . $parameters['currency'] . '",
+										channels: ["card", "bank", "ussd", "qr", "mobile_money", "bank_transfer"],
+										reference: "' . $parameters['reference'] . '",
+										container: "paystackEmbedContainer",
+										onSuccess: function(response){
+
+											console.log( response );
+											location.href = "' . $parameters['success_url'] . '?ref=" + response.reference;
+										},
+										onCancel: () => {
+											// user closed popup
+											//alert( "Payment canceled. We will now reload the page." );
+											//location.reload();
+											document.getElementById( "activate-button" ).style.display = "block";
+											document.getElementById( "activate-message" ).style.display = "none";
+
+										}
+	 
+									 });
+								}
+
+								loadPopUp();
+
+
+
 								</script>
 								</form>
 		' );
